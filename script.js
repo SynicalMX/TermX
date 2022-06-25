@@ -10,10 +10,10 @@ let textinit = [
 const version = "0.0.1";
 
 // Create a enum for the commands
-const commands = {
+var commands = {
     "help": {
         "description": "Show the list of commands",
-        "action": function () {
+        "action": function (args) {
             for (let i = 0; i < Object.keys(commands).length; i++) {
                 console.log(Object.keys(commands)[i]);
                 let textPara = document.createElement("p");
@@ -24,19 +24,19 @@ const commands = {
     },
     "clear": {
         "description": "Clear the terminal",
-        "action": function () {
+        "action": function (args) {
             document.body.innerHTML = ""
         }
     },
     "exit": {
         "description": "Exit the terminal",
-        "action": function () {
+        "action": function (args) {
             window.close()
         }
     },
     "info": {
         "description": "Show info about the terminal",
-        "action": function () {
+        "action": function (args) {
             let text = document.createElement("p");
             text.innerHTML = "Author: " + "Synical";
             document.body.appendChild(text);
@@ -45,7 +45,30 @@ const commands = {
             text.innerHTML = "Version: " + version;
             document.body.appendChild(text);
         }
-    }
+    },
+    "create": {
+        "description": "Create a new command",
+        "parameters": "create <command> <description> <message>",
+        "action": function (args) {
+            if (args.length < 2) {
+                let text = document.createElement("p");
+                text.innerHTML = "Not enough arguments";
+                document.body.appendChild(text);
+            } else {
+                let command = args[1];
+                let description = args[2];
+                let message = args[3];
+                commands[command] = {
+                    "description": description,
+                    "action": function (args) {
+                        let text = document.createElement("p");
+                        text.innerHTML = message;
+                        document.body.appendChild(text);
+                    }
+                }
+            }
+        }
+    }       
 }
 
 
@@ -125,7 +148,8 @@ function commandHandler(command) {
     }
 
     if (command in commands) {
-        commands[command].action();
+        let args = command.split(" ");
+        commands[command].action(args);
     } else {
         let textPara = document.createElement("p");
         textPara.innerHTML = "Command not found";
