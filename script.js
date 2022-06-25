@@ -147,8 +147,8 @@ function commandHandler(command) {
         return
     }
 
-    if (command in commands) {
-        let args = command.split(" ");
+    let args = command.split(" ");
+    if (args[0] in commands) {
         commands[command].action(args);
     } else {
         let textPara = document.createElement("p");
