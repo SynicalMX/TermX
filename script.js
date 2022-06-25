@@ -149,7 +149,7 @@ function commandHandler(command) {
 
     let args = command.split(" ");
     if (args[0] in commands) {
-        commands[command].action(args);
+        commands[args[0]].action(args);
     } else {
         let textPara = document.createElement("p");
         textPara.innerHTML = "Command not found";
