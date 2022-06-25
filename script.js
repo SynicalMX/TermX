@@ -49,6 +49,12 @@ const commands = {
 }
 
 
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    let textPara = document.createElement("p");
+    textPara.innerHTML = "ERROR: This terminal is not supported on mobile devices!";
+    document.body.appendChild(textPara);
+}
+
 
 var cursor = document.createElement("span");
 
