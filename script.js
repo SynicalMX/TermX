@@ -120,6 +120,10 @@ setInterval(function () {
 
 
 function commandHandler(command) {
+    if (command === "" || command === " ") {
+        return
+    }
+
     if (command in commands) {
         commands[command].action();
     } else {
