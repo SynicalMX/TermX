@@ -13,7 +13,22 @@ const version = "0.0.1";
 var commands = {
     "help": {
         "description": "Show the list of commands",
+        "parameters": "help <command> | help",
         "action": function (args) {
+            // Check if args is not empty
+            if (args.length > 1) {
+                // Check if command is not the list of commands
+                if (!args[1] in commands) {
+                    let textPara = document.createElement("p");
+                    textPara.innerHTML = "Command not found";
+                    document.body.appendChild(textPara);
+                }
+                // Show the help for the command
+                let textPara = document.createElement("p");
+                textPara.innerHTML = commands[args[1]].parameters;
+                document.body.appendChild(textPara);
+            }
+
             for (let i = 0; i < Object.keys(commands).length; i++) {
                 console.log(Object.keys(commands)[i]);
                 let textPara = document.createElement("p");
@@ -24,18 +39,33 @@ var commands = {
     },
     "clear": {
         "description": "Clear the terminal",
+        "parameters": "clear",
         "action": function (args) {
+            // Check if args is not empty
+            if (args.length > 1) {
+                let textPara = document.createElement("p");
+                textPara.innerHTML = "Too many arguments";
+                document.body.appendChild(textPara);
+            }
             document.body.innerHTML = ""
         }
     },
     "exit": {
         "description": "Exit the terminal",
+        "parameters": "exit",
         "action": function (args) {
+            // Check if args is not empty
+            if (args.length > 1) {
+                let textPara = document.createElement("p");
+                textPara.innerHTML = "Too many arguments";
+                document.body.appendChild(textPara);
+            }
             window.close()
         }
     },
     "info": {
         "description": "Show info about the terminal",
+        "parameters": "info",
         "action": function (args) {
             let text = document.createElement("p");
             text.innerHTML = "Author: " + "Synical";
@@ -60,6 +90,7 @@ var commands = {
                 let message = args[3];
                 commands[command] = {
                     "description": description,
+                    "parameters": message,
                     "action": function (args) {
                         let text = document.createElement("p");
                         text.innerHTML = message;
