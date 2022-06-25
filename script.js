@@ -20,11 +20,13 @@ var commands = {
                     let textPara = document.createElement("p");
                     textPara.innerHTML = "Command not found";
                     document.body.appendChild(textPara);
+                    return
                 }
                 // Show the help for the command
                 let textPara = document.createElement("p");
                 textPara.innerHTML = commands[args[1]].parameters;
                 document.body.appendChild(textPara);
+                return
             }
 
             for (let i = 0; i < Object.keys(commands).length; i++) {
@@ -170,7 +172,7 @@ setInterval(function () {
     }
 
 }
-    , 500);
+, 500);
 
 
 function commandHandler(command) {
