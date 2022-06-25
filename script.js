@@ -91,7 +91,14 @@ var commands = {
                     "description": description,
                     "parameters": parameters,
                     "action": function (args) {
-                        eval(code)
+                        try {
+                            eval(code)
+                        }
+                        catch (e) {
+                            let text = document.createElement("p");
+                            text.innerHTML = 'ERROR: ' + e;
+                            document.body.appendChild(text);
+                        }
                     }
                 }
             }
