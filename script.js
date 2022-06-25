@@ -139,6 +139,10 @@ document.addEventListener('keydown', function (event) {
         return
     }
 
+    if (event.key === "Shift" || event.key === "Control" || event.key === "Alt" || event.key === "Meta") {
+        return
+    }
+
     if (event.key === "Backspace") {
         para.removeChild(cursor)
         if (para.lastChild.nodeValue === 'terminal:~$ ') {
