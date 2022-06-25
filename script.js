@@ -1,10 +1,8 @@
 // Create a new paragraph element
 var paraTemp = document.createElement("p");
 let textinit = [
-    " ____ ____ ____ _  _ _  _ ",
-    "(_  _(  __(  _ ( \\/ ( \\/ )",
-    "  )(  ) _) )   / \\/ \\)  ( ",
-    " (__)(____(__\\_\\_)(_(_/\\_)"
+    "Welcome to TermX!",
+    "Type 'help' for a list of commands"
 ]
 
 const version = "0.0.1";
