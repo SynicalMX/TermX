@@ -78,7 +78,7 @@ var commands = {
     },
     "create": {
         "description": "Create a new command",
-        "parameters": "create <command> <description> <message>",
+        "parameters": "create <command> <parameters> <description> <code>",
         "action": function (args) {
             if (args.length < 2) {
                 let text = document.createElement("p");
@@ -86,29 +86,20 @@ var commands = {
                 document.body.appendChild(text);
             } else {
                 let command = args[1];
-                let description = args[2];
-                let message = args[3];
+                let parameters = args[2];
+                let description = args[3];
+                let code = args[4];
                 commands[command] = {
                     "description": description,
-                    "parameters": message,
+                    "parameters": parameters,
                     "action": function (args) {
-                        let text = document.createElement("p");
-                        text.innerHTML = message;
-                        document.body.appendChild(text);
+                        eval(code)
                     }
                 }
             }
         }
     }       
 }
-
-
-if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-    let textPara = document.createElement("p");
-    textPara.innerHTML = "ERROR: This terminal is not supported on mobile devices!";
-    document.body.appendChild(textPara);
-}
-
 
 var cursor = document.createElement("span");
 
