@@ -7,6 +7,8 @@ let textinit = [
 
 const version = "0.0.1";
 
+prompt()
+
 // Create a enum for the commands
 var commands = {
     "help": {
