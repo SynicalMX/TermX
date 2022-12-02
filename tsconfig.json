@@ -1,0 +1,10 @@
+{
+	"compileOnSave": true,
+	"compilerOptions": {
+		"target": "ES6",
+		"module": "ESNext",
+		"moduleResolution": "node",
+		"rootDir": "src",
+		"outDir": "dist"
+	}
+}
