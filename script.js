@@ -105,7 +105,27 @@ var commands = {
                 }
             }
         }
-    }       
+    } ,
+    "echo": {
+        "description": "Echo text into the console",
+        "parameters": "echo <text>",
+        "action": function (args) {
+            if (args.length < 1) {
+                let textPara = document.createElement("p");
+                textPara.innerHTML = "Not enough arguments";
+                document.body.appendChild(textPara);
+                return
+            }
+
+            let text = ""
+            for (let i = 0; i < args.length; i++) {
+                text += " " + args[i]
+            }
+            let textPara = document.createElement("p");
+            textPara.innerHTML = text;
+            document.body.appendChild(textPara);
+        }
+    }      
 }
 
 var cursor = document.createElement("span");
